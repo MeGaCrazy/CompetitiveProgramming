@@ -1,3 +1,15 @@
+/*
+* target: get Biggest Number from swaping two digit and reduce them by 1
+* sol : try to swap every 2 digit in the number and put the number that had been swaped
+*       in  queue and do the same thing untill can't do swap anymore..
+* corner case : if digit of i =0 or digit of j=0  || the number already in queue or calculated before
+*
+*
+*
+*/
+
+
+
 #include <vector>
 #include <list>
 #include <map>
