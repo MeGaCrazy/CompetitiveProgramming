@@ -1,3 +1,11 @@
+/*
+*       target : count the number of probabilities that can  make the design safe..
+*       sol    : every one point have n adj point have (1<<n)-1 probablility of removing edges but now see if u have 3 points 
+*               we calculate (case :not have anynode 3 time so we must substract from num of size of edges)
+*                corner case: check if there is triangle  
+*/
+
+
 #include <vector>
 #include <list>
 #include <map>
