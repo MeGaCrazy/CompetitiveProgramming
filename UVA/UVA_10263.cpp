@@ -2,8 +2,8 @@
 /*
 *  target: get position on segment  such that the distance between it and point M is minimal
 *  sol : make 2 vectors get projection length of one on another and then make scale for this line that the projection length is on it
-*         and then add end point of vector to make him on the line again ..trivial 
-*        a like this formula c(new point)=u(projection length of ac on ab)*ab+a;
+*         and then add end point of vector to make him on the line again ..
+*        a like this formula c(new point)=u*ab+a;
 * 
 */
 using namespace std;
