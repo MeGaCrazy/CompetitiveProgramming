@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
 /*
 *  target: get position on segment  such that the distance between it and point M is minimal
-*  sol : make 2 vectors get theta and then make scale for this line and then add point 
-*        a like this formula c(new point)=u(theta)*ab+a;
+*  sol : make 2 vectors get projection length of one on another and then make scale for this line that the projection length is on it
+*         and then add end point of vector to make him on the line again ..
+*        a like this formula c(new point)=u*ab+a;
 * 
 */
 using namespace std;
