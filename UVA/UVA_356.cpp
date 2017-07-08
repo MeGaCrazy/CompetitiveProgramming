@@ -1,7 +1,7 @@
 /*
 * target : cal num of complete covered by circle and the cell that contained segment
 * sol    :  work on 1/4 of grid coz every 1/4 is repeat i mean symmetry
-            do the check condition to valid and the at result multiply all by 4 .. 
+            do the check condition if left and right are inside the radius to valid and the at result multiply all by 4 .. 
 
 */
 
@@ -18,7 +18,7 @@ void solve(){
    double rad=(n-0.5)*(n-0.5);
    for(int i=0;i<n;i++){
       for(int j=0;j<n;j++){
-          if((double)cal(i,j)<rad&&(double)cal(i+1,j+1)<rad)comp++;
+          if((double)cal(i,j)<rad&&(double)cal(i+1,j+1)<rad)comp++; // if segment cross with i,j that must cross with i+1,j+1 :) 
           else if((double)cal(i,j)<rad&&(double)cal(i+1,j+1)>rad)seg++;
       }
    }
