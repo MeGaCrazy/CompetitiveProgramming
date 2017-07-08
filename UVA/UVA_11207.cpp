@@ -1,3 +1,10 @@
+/*
+*  target : cal the max size for all 4 bird from paper
+*  sol   : easly u can see there are to secnario that first get min between a/4 (a is the Biggest) ,b 
+           to avoid choose a/4 is less than b that now not square
+*          second check if take min between a/2 b/2 is big than the first or not 
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
