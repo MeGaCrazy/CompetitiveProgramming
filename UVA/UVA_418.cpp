@@ -1,3 +1,13 @@
+/*
+*  target :get the larget area of the rectangle between the 4 sides
+*  sol   : just make all perumnation for 4 number then handle all sides by loops
+*          let me explain : take first 2 side that must like that -|-- then make choose another one that intersect with the horizontal
+*            line then when u get it remain connect the remain side with vertical side and check if he connect with the third side with 
+*             the same horizontal length .... 
+*
+*/
+
+
 #include <bits/stdc++.h>
 using namespace std;
 const int N=11;
