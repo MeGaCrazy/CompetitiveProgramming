@@ -1,3 +1,9 @@
+/*
+*  target :get max indepenet set
+*  sol    : from bubble sort obervation u will see that the max set it's as same as LIS
+*
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 vector<int>v;
