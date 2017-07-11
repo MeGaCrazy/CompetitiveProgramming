@@ -1,5 +1,5 @@
 /*
-*  target : culate the probability that all of the teams solve at least one problem,
+*  target : calculate the probability that all of the teams solve at least one problem,
 *              and at the same time the champion team solves at least N problems
 *     sol : Using Bottom-up DP with 3 dimentions (TeamNumber,ProblemNumber,NumOfSucess to solve)..
 *           for each team i .. in problem j can be succeed from 0-j Just check if  with to forumla :
