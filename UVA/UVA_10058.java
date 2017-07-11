@@ -34,8 +34,6 @@ public class Main {
             String str;
             while (in.hasNextLine()) {
                 str = in.nextLine();
-                String s = "             bla     bla     ";
-                out.println(s.trim());
                 if (str.replaceAll(" +", " ").trim().matches(STATEMENT)) {
                     out.println("YES I WILL");
                 } else {
