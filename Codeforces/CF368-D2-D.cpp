@@ -7,7 +7,7 @@
 *          5-just simply remove the first and check if now is equal to the ogrinial cnt++;
 *          every time check if m reach Bnums if yes first position of sequence is the answer Coz he said by rearraning
 *          so we don't care for positions we just need the begining of the sequence :) enjoy
-*
+*    Summary: in the sequence the subsequence can be valid too if we remove the first :) 
 */
 
 
