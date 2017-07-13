@@ -21,7 +21,10 @@ bool check(int i,int j){
 
 int main(){
      int n;
-     //freopen("in","r",stdin);
+#ifndef ONLINE_JUDGE
+     freopen("in","r",stdin);
+#endif
+
      while(scanf("%d",&n)==1){
          memset(arr,0,sizeof(arr));
           for(int i=0,x;i<(1<<n);i++){
@@ -32,13 +35,13 @@ int main(){
           }
           int ans=0;
           for(int i=0;i<(1<<n);i++){
-              for(int j=0;j<(1<<n);j++){
-                  if(i!=j&&check(i,j)){
+              for(int j=i+1;j<(1<<n);j++){
+                  if(check(i,j)){
                      ans=max(ans,arr[i]+arr[j]);
                   }
               }
           }
-       //   fprintf(stderr,"the time is %d\n ms",(int)clock());
+          fprintf(stderr,"the time is %dms\n",(int)clock());
           printf("%d\n",ans);
      }
 }
