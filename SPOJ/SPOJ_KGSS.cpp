@@ -1,3 +1,9 @@
+/*
+*      target :get RMQ but for 2 elements not 
+*        sol  :Just using the usual RMq but now make segment pair get pair not only 1 :)
+*
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 123456;
