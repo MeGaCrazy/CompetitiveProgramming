@@ -1,7 +1,7 @@
 /*
 *   target : whose win and if 1 count the number of moves
 *     sol  : from observation that player 2 win only if
-*            the number (q) is prime number and the num of prime factors not greater than or equal to 2 :) 
+*           the number is two prime factors of q
 *
 *
 */
