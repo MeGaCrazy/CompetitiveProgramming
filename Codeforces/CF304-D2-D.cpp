@@ -6,7 +6,7 @@
 *               (Third) Now to get the lower-left point we have to consider the condition must be The his center be the closted 
 *                       to x,y 
 *                       now u have 2 choice 
-*                       make x1=x-a Or Try to shifting him by the difference unit between the center and x 
+*                       make x1=n-a Or Try to shifting him by the difference unit between the center and x 
 *                       Same as y But if difference <0 mean just make him at rectangle because we can't shifting under (0,0) :) OutOfRange :)
 *                                                                      
 *
