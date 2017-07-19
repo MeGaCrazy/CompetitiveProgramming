@@ -1,3 +1,11 @@
+/*
+*  target : count number of different formation 
+*    sol  : just make dp his choice the element is bigger than the previous choice element :) 
+*
+*/
+
+
+
 #include <vector>
 #include <list>
 #include <map>
