@@ -21,8 +21,11 @@ int main(){
     long long ans=2e18;
     for(int i=1;i<(1<<m);i++)dp[i]=2e18;
     for(int i=1;i<=n;i++){
-       //here idk how to make knapsack :( i will back to solve it later 
-        ans=min(ans,1ll*b*k[solver[i]]+dp[(1<<m)-1]);
+         for(int j=(1<<m)-1;j>=0;j--){
+           dp[j|(prob[solver[i]])]=min(dp[j|(prob[solver[i]])],dp[j]+x[solver[i]]);
+         }
+
+         ans=min(ans,1ll*b*k[solver[i]]+dp[(1<<m)-1]);
     }
     if(ans==2e18)puts("-1");
     else printf("%lld\n",ans);
