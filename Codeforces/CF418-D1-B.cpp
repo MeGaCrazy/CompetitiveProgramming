@@ -17,7 +17,7 @@ int main(){
        }
        solver[i]=i;
     }
-    sort(solver+1,solver+n+1,cmp);
+    sort(solver+1,solver+n+1,cmp);   // now is sorted by moniter number to don't care about it again and focus in  miniase by x(price he get)
     long long ans=2e18;
     for(int i=1;i<(1<<m);i++)dp[i]=2e18;
     for(int i=1;i<=n;i++){
