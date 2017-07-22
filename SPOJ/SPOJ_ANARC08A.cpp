@@ -19,9 +19,10 @@ struct trie {
 		memset(s, 0, sizeof(s));
 		index = -1;
 	}
-	void insert(char *ss, int &k) {
+	int insert(char *ss, int &k) {
 		if (*ss == '\0') {
 			if (index == -1)index = k++;
+			return index;
 		}
 		else {
 			int cur = *ss - '0';
@@ -68,11 +69,11 @@ void bfs() {
 			}
 			tmp[Rotate[i][j-1]] = x;
 			int y = k;
-			t->insert(tmp, k);
+			int v=t->insert(tmp, k);
 			if (y != k) { //oh wow it's new make new index for him  :) 
-				dis[k] = dis[a] + 1;
-				q.push(k);
-				strcpy(str[k], tmp);
+				dis[v] = dis[a] + 1;
+				q.push(v);
+				strcpy(str[v], tmp);
 			}
 		}
 	}
