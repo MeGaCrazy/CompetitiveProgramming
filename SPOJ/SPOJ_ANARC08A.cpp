@@ -1,3 +1,9 @@
+/*
+     target : get the shortest path to make rotation to make the numbers return to it's original
+     sol    : Using Trie and BFS every step make all rotation possible clockwise and counterclockwise
+*/
+
+
 #include <cstdio>
 #include <cstring>
 #include <cassert>
