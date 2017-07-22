@@ -2,14 +2,15 @@
 *       target : get SSSP with minimum cost
 *         sol  : make Dijkstra with 3 parameters cost and the distance he can move and (v) vertex he go to
 *                there is probalaity that  he arrive with much cost that i have but will go for distance bigger than me then i can choice him
-*                1-he can go this road so keep him going
-*                2-if i can take new taxi from this junction 
+*                2 Choices ::::
+*                1-he can go this road so keep him going and still we don't need to pay for him again
+*                2-i can take new taxi from this junction 
 *
 */
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 1234;
- vector<int>adj[N];
+vector<int>adj[N];
 long long dis[N];
 pair<int, int>taxi[N];
 long long Arrlen[N];
