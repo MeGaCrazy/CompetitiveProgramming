@@ -4,7 +4,7 @@
 *           [2,3],[2,4] and so on so if u to make all possible route effeciently u can make it like disjoint sets
 *           first there is a route between two compment so we can make routes between all pair of different component so
 *           Just multiply number of Area at comp1 by comp2 :) and then with the route that connect them :) 
-*
+*           Summary : Don't Forget to sort in Desc to valid the the algorithms
 */
 
 #include <bits/stdc++.h>
