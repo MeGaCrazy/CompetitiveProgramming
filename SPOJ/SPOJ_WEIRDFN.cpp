@@ -1,3 +1,16 @@
+/*
+*      First all u need to manage that the median how to get it 
+*      median in all elements before him is less than him and after him surely bigger than him (Seq is sorted) :)
+*      to manage that :
+*             1- need to have 2 prirority_queue one save that all i have before me is less than me 
+*             2- and the second to manage to store element when the index is even and take also when
+*             he had element less than me .. take a look 
+*                            median
+*               first_priroty      second_priority
+*                all<=median         all >median
+*                
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 const int Mod=1000000007;
