@@ -1,3 +1,9 @@
+/*
+*         First Step really easy Just get the symmetric of the i or ((int)1e+6 - i +1) where i (1<=i<=(int)1e+6)
+*
+*
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 const int N=1e6;
