@@ -1,3 +1,8 @@
+/*
+*        Idea : it was clear that the minimex is the difference between least range in subarray :)
+*               then make all orinial array every (differene ) be like cycle to generate the sequence fastly :)
+*
+*/
 #include <bits/stdc++.h>
 using namespace std;
 int main(){ 
