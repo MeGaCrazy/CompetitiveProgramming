@@ -1,5 +1,5 @@
 /*
-*   Idea : Trivial problem But will give Tle if u use map or something like that
+*    Idea : Trivial problem But will give Tle if u use map or something like that
 *          Process : make sequnce from 1 to n and if from i,j killed remove from sequence to avoid 
 *                    Big Space Searching 
 *

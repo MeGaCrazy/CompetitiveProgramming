@@ -1,3 +1,12 @@
+/*
+*      Idea: make usual unweight sssp
+*            But with some edit :
+*                  Every Time u try to go through the direction as much as u can :)
+*                  manage visit once in anypath to a void TLE
+*                  Weird Case : Try to get the input from the file block by block not char by char it will get Tle if u read char
+*                                Stupid reason bs m3l4 Spoj bit2ms =D 
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 const int N=1005;
