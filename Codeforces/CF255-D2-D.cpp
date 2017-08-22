@@ -16,12 +16,14 @@ bool check(int sec){
       ans-=((n-y-1)-sec)*((n-y-1)-sec);
      }
      // now the part is to get the handle cutting same part twice 
-     	                       // up left
+     if(n-x+n-y<=t){
+                   
+     }	           // up left
 
-     	                       // up right
+     	                           // up right
 
-     	                       // down left
-     	                       // down right
+     	                        // down left
+     	                        // down right
 
      	return ans >=c;                       
 }
