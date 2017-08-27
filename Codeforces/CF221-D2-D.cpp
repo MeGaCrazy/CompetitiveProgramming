@@ -12,7 +12,7 @@
 using namespace std;
 const int N=(int)1e5+7;
 int cnt[505],arr[N],dp[505][N];
-map<int,int>mp;
+int vis[N];
 
 
 int main(){
@@ -21,8 +21,9 @@ int main(){
      scanf("%d %d",&n,&m);
      for(int i=1;i<=n;i++){
          scanf("%d",arr+i);
-         mp[arr[i]]++;
-         if(mp[arr[i]]==arr[i])cnt[++k]=arr[i];
+         if(arr[i]>n)continue;
+         vis[arr[i]]++;
+         if(vis[arr[i]]==arr[i])cnt[++k]=arr[i];
      }
      for(int i=1;i<=k;i++){
          for(int j=1;j<=n;j++){
