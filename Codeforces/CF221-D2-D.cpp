@@ -1,7 +1,7 @@
 /*
-*  Idea : Just save the first One how satisfy the condition and so on for second and other 
-*         Now what's the maximum number how satisfy the condition if we have 1 2 2 we need 3 element array
-*         if we have number like 500 how element we need to staisfy 500+(501)/2 > 10^5 now what is the max number 500 :)
+*  Idea : Just save the first One who  satisfy the condition and so on for second and other 
+*         Now what's the maximum number that is  satisfy the condition if we have 1 2 2 we need 3 element array
+*         if we have number like 500 how many  elements we need to staisfy : 500+(501)/2 > 10^5 now  the max number 500 :)
 *         Then make consective range for every One then easly the answer
 *         if the First One the difference between [firstOne][lastOfInterval]-[firstOne][firstOfInterval-1] == The First satisfied number then ans++ 
 *         Happy Solving :)
