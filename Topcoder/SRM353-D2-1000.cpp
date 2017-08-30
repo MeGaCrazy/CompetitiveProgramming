@@ -1,3 +1,12 @@
+/*
+*      Idea : Try from each point as a starting point and then we can drop in next platfrom under us if 
+*           Let's See some Math Equations vertical distance = (g*t^2)/2 :
+*                                         that mean when move othersides and simplifier t=Sqrt((vertical_distance)*2)/g)
+*                                         then we need to check we don't move with speed more than v 
+*                                         Speed = distance / time  
+*           Happy Solving :)
+*
+*/
 #include <vector>
 #include <list>
 #include <map>
