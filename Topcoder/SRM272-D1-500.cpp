@@ -1,7 +1,7 @@
 /*
-*    idea : hot to get he state for siting a repersentitve A is Current chair * ( remain A )
-*            there is There 3 choice put A or Put B or make him Empty 
-*
+*    idea : we have n chairs then to make valid the Oriention so u need to muliply ur answer with n chairs
+*           let's move to solution if we put A in First chair then There (A-1)! for it's possible perumtation    
+*           make the same for B ,,, don't forget to handle the Case that we choice that it's empty
 *
 */
 #include <vector>
