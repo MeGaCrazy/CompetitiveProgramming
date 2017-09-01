@@ -4,8 +4,10 @@
 *            Combinations to Put a's in different position or in same time put z's in different position ,
 *            The key of this idea the First Charchater of The string if we have string n =2 m=2 Then the combinations is
 *             aazz -> azaz -> azza | zaaz -> zaza -> zzaa  we divide in two groups start with a's and z's 
-*             now to know if he in The first Group Ignore the First One coz it fixed then calculate C(m+n-1,n-1) if C >= k then it's in first interval  
-*             else he is in second group
+*             now to know if he in The first Group Ignore the First One coz it fixed in otherword C(m+n-1,n-1) how many string with us 
+*             in a also same in z like now for sample above C(2+2-1,1)=3 see nw we now we have 3 in a's group One and 3 in z'group
+*             if C >= k then it's in first interval But if he will in second interval as we said we need to know now he in which index 
+*             to calculate the suitable char for him Just subtract k-=C(m+n-1,n-1)
 */
 #include <vector>
 #include <list>
