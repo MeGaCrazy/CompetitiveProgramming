@@ -1,8 +1,8 @@
 /*
 *   Idea : Cute Nest Range problem Just make nested like Cutting Sticks problem and then 
 *          if we in Range (l,r)   tcheck if there is 1-(r-l+1) consective  number are similar if there exist minimize so 
-*          The Ordinary Thing if we have (l,r)range the ans is (r-l+1) But we make him if there is exist 2 consective equal we make that
-*          range (l,r) = range (l,NumberOfSimilarConsectiveSubString)
+*          The Ordinary Thing if we have (l,r)range the ans is (r-l+1) But we make him if there is exist NumberOfSimilarConsectiveSubString consective equal we make that
+*          range (l,r) = range (l,l+NumberOfSimilarConsectiveSubString)
 *          Happy Solving :)
 */
 
