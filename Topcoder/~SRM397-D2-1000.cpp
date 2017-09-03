@@ -37,7 +37,7 @@ public:
          if(ret!=-1)return ret;
          ret=0;
          for(int i=0;i<(int)v.size();i++){
-            if((mask&(1<<i))==0&&v[i] <= rem){
+            if((mask&(1<<i))==0&&v[i] <= rem){ // that is the passed the other not
               ret=max(ret,1+solve((mask|(1<<i)),bag,rem-v[i]));
             }
          }
