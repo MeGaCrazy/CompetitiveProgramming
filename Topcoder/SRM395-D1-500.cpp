@@ -1,3 +1,12 @@
+/*
+*       d[n][j][k] means number of ways to place i buildings, where j is visible from the left and k from the right.
+*       Now imagine you are placing buildings one by one from the smallest to the tallest, there are only three cases to consider:
+*       1) You put it on the leftmost free position - it will be visible from left
+*       2) You put it on the rightmost free position - it will be visible from right
+*       3) You put it on one of the remaining n-2 positions - it won't be visible.
+*
+*
+*/
 #include <vector>
 #include <list>
 #include <map>
