@@ -2,7 +2,7 @@
 *   Idea : Just make mask and the current value and then make all perumation 
 *          Doing the Mod Trick if 133%7==0 then it's equal [100%7 + 30%7 + 3 %7]%7=0 :)
 *          Just mulitply each step by 10 and mod by m every time :)
-*          
+*          Corner Case make same position i mean if u have 2 digits = 3  u must put them in same position that ..
 *
 */
 #include <vector>
