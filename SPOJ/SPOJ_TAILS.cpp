@@ -14,17 +14,17 @@ int solve(int mask){
        if((mask&(1<<i))==0)continue;
        if((mask&(1<<i))&&i==0){
                       cerr<<i<<endl;
-          ret=min(ret,solve(mask^(1<<(i+1))));
+          ret=min(ret,solve(mask^(1<<(i+1))^(1<<i)));
        }
        else if((mask&(1<<i))&&i==N-1){
                    cerr<<i<<endl;
-          ret=min(ret,solve(mask^(1<<(i-1))));
-       }
+          ret=min(ret,solve(mask^(1<<(i-1))^(1<<i)));
+        }
        else {
-         //  if((i-1)>=0&&(mask&(1<<(i-1)))||(i+1)<N&&(mask&(1<<(i+1)))){
+           if((i-1)>=0&&(mask&(1<<(i-1)))||(i+1)<N&&(mask&(1<<(i+1)))){
             cerr<<i<<endl;
             ret=min(ret,solve(mask^(1<<i)^(1<<(i+1))^(1<<(i-1)))+1);
-         // }
+          }
        }
     }
     return ret;
