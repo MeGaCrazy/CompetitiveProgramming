@@ -1,5 +1,5 @@
 /*
-*  Idea : Recurrence need memorize with vector and map and just simulate the process
+*  Idea : Recurrence need memoize with vector and map and just simulate the process
 *
 */
 #include <vector>
