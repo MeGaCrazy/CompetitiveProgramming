@@ -1,0 +1,74 @@
+/*
+*  Idea : he need is simulate  The "Prufer" code
+*         So First : we should  parse the input and using data strcuture vector< set<int> > to make deleting and inserting effecient :)
+*         Second   : we must take the leaf of smallest number first and delete it and his aciedent print it :) 
+*                    But wait There is Corner Case : What if i take remove the edge from x and y (x is was the leaf)
+*                                                    and (y) become conncted to only 1 node ( now it's leaf ) So Obviously i should
+*                                                    add it to the queue to be proceed :)
+*      Happy Solving :)
+*/
+
+#include<iostream>
+#include<stack>
+#include<vector>
+#include<queue>
+#include<set>
+#include<cstring>
+#include<cstdio>
+#include <string>
+#include <functional>
+using namespace std;
+char s[500];
+int idx;
+int n;
+int main() {
+	//#ifndef ONLINE_JUDGE
+	//  freopen("in","r",stdin);
+	// freopen("out","w",stdout);
+	//#endif
+	while (gets(s)) {
+		vector< set<int> >adj(105, set<int>());
+		int x,y;
+		int idx = 0;
+		stack<int>st;
+		int len=strlen(s);
+		while (idx<len-1) {
+			if (s[idx] == '(') {
+				sscanf(s + idx+1, "%d", &x);
+				if (x >= 10) {
+					idx += 3;
+				}
+				else idx += 2;
+				st.push(x);
+			}
+			else if (s[idx] == ')') {
+				y = st.top();
+				st.pop();
+				x = st.top();
+				adj[x].insert(y);
+				adj[y].insert(x);
+				idx++;
+			}
+			else if (s[idx] == ' ')idx++;
+		}
+		priority_queue<int, vector<int>, greater<int> >pq;
+		int n = 0;
+		for (int i = 1; adj[i].size(); i++) {
+			n++;
+			if (adj[i].size() == 1)pq.push(i);
+		}
+		for (int i = 1; i<n; i++) {
+			int x = pq.top();
+			pq.pop();
+			int y = *(adj[x].begin());
+			adj[x].erase(y);
+			adj[y].erase(x);
+			if (adj[y].size() == 1) {
+				pq.push(y);
+			}
+			if (i != 1)printf(" ");
+			printf("%d", y);
+		}
+		puts("");
+	}
+}

@@ -1,0 +1,59 @@
+/*
+*    Idea : First Solution Came from Just Observation here we go :)
+*           let Orginial = ABCDEF  let make this perumation twice =BCDAEF will get CDABEF
+*           in first step A--B  in next step C--A and D--B that mean the even cycle split to even length , then that it 
+*                         |  |  
+*                         D--C
+*       Summary: There is even number of even length cycles if true print yes ,otherwise no
+*
+*       Happy Solving :)
+*/
+#include <bits/stdc++.h>
+struct node{
+	int child;
+}s[26];
+const int N=26;
+bool visited[N],path[N];
+int main() {
+ 	char st[26];
+	int t;
+	scanf("%d",&t);
+	while(t--){                                            
+	        memset(path,0,sizeof(path));
+	        memset(visited,0,sizeof(visited));
+		scanf("%s",st);
+		for(int i = 0; i < 26; i++){
+			s[i].child = st[i] - 'A';
+		}
+		for(int i=0;i<26;i++)
+		{
+			if(visited[i])
+			continue;
+			int len = 0;
+			int j = i;
+			visited[j] = true;
+			if(s[j].child!=i){
+			while(s[j].child!=i){
+				j = s[j].child;
+				visited[j] = true;
+				len++;
+		   	}
+			   len++;
+	              }
+		path[len]++;
+		}
+		int flag = 0;
+		for(int i=1;i<26;i++){
+			if(i%2 == 0){
+				if(path[i]%2){
+					flag = 1;
+                                   printf("No\n");
+					break;
+				}
+			}
+		}
+		if(flag == 0)
+                  printf("Yes\n");
+	}
+	return 0;
+}
