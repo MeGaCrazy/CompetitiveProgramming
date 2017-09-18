@@ -1,7 +1,7 @@
 /*
 *    Idea : The problem divide in two parts preprocessing and dp 
 *           1- preprocessing
-*                 a- u need to Find Shortest why to change x to y ( doable with floyd) 
+*                 a- u need to Find Shortest way to change x to y ( doable with floyd) 
 *                 b- and Shortest way to add x and also remove x
 *                    This doable with try for x try to add y and change it to x,and For Remove Try to Change x to y and Remove y
 *           2- dp now the recurrence Really Easy Just usual Nested Range But There is alot of choices
