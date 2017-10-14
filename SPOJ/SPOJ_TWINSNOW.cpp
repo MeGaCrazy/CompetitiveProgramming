@@ -1,7 +1,17 @@
-/*
+/**
 *  Idea : just sort lengths of arms in every snowflake  and then sort all of them 
+*   
+*  Problem Statement : i'll give u (n) snowflakes everyone has (6 arms) u can imagine it like Clock have 6 hour :) 
+*                      and the arm it  connect  from center of clock to each  hour ... (Every Arm has length)
+*                      now i'll give u every snowflakes but read in any direction  if clock like that      1
+*                                                                                                       2     6
+*                                                                                                        3   5
+*                                                                                                          4
+*                    it's possible i give u arams reading from 1 to 6 || from 2 to 1 || from 4 to 3 and so on
+*                    and u say if there is two couple are twin .. Twin means that 2 snowflakes have equal arms' length
 *
-*/
+*
+**/                                                                                                        
 
 #include <bits/stdc++.h>
 using namespace std;
