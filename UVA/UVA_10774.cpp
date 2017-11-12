@@ -1,6 +1,6 @@
 /*
 *   Idea : The problem Depend on Josephus Problem 
-*          will explained in this link https://www.youtube.com/watch?v=uCsD3ZGzMgE
+*          well explained in this link https://www.youtube.com/watch?v=uCsD3ZGzMgE
 *
 */
 
