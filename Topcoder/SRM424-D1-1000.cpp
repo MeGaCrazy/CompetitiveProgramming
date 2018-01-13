@@ -5,7 +5,7 @@
             = i*X[i] - X[0...i-1]  But there's a problem u must know if X[j] others trees less than X in left or right 
              of X[i] to avoid negative problem so now to get the distance u want must follow this obviously formula
              Price X[i] = (# of left trees  )*X[i] - (cumlative Sum of left trees) + (cumlative sum of right trees) - (# of right trees )* X[i]
-
+    Corner Case : Take Care if the position of tree = 0 due to using mod so add 1 for all positions
              Happy Solving :)
 
 **/
