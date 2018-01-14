@@ -22,6 +22,20 @@ pair<int, int>point[N];
 pair<int, int>curpoint[N];
 int xx[] = { -1,-1,1,1 };
 int yy[] = { -1,1,1,-1 };
+double in(double s,double e,double x){
+ return x >=s && x <= e;
+}
+bool PointOn(seg &S,point & P){
+    double minx,maxx,miny,maxy;
+    minx=min(S.s.x,S.e.x);
+    maxx=max(S.s.x,S.e.x);
+    miny=min(S.s.y,S.e.y);
+    maxy=max(S.s.y,S.e.y);
+    if(in(minx,maxx,P.x) !=0  && in(miny,maxy,P.y)!=0){
+       return ((S.s.x - S.e.x)*(P.y - S.s.y) == (S.s.y - S.e.y) * (P.x - S.s.x));
+    }
+     return 0;
+}
 int cross(pair<int, int> o, pair<int, int> a, pair<int, int> b) {
 	return (int)(a.first - o.first)*(b.second - o.second) - (a.second - o.second)*(b.first - o.first);
 }
