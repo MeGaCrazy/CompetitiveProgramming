@@ -1,3 +1,14 @@
+/**
+ @idea : just add for every elements his correspond value in instrument b ,,x= StringA[currow]+idxvalue+d;
+         then sort dsc ,,, cause he want highest indeces work get the highest priority 
+         and try to find the suitable row in col[i...n] that less than curx and curx <= col[i]+35 
+         if no one valid put 'x' in all rows in this column if valid put '-' if the index not used :) 
+
+
+         Happy Solving :)
+**/
+
+
 #include <vector>
 #include <list>
 #include <map>
@@ -21,148 +32,58 @@
 #include <string.h>
 using namespace std;
 
-vector<string>ans;
-string pos;
+
 const int N = 55;
 int col[N];
-vector<int>sa, sb;
-int n;
-int dp[N][2505];
-int curcol;
-bool bad[N];
-//vector<pair<int, int> >a;
+vector<int>notes[N];
+
 class StringsAndTabs {
 public:
 
-	/*
-
-	int solve1(int idx){
-	int value= col[idx];
-	int rem=0;
-	vector<pair<char,int> >ret;
-	for(int i=a.size()-1;i>=0;i--){
-	if( value > a[i].first +35){
-	ret.push_back(make_pair(pos[35],a[i].second));
-	value -= a[i].first +35;
-	}else if( value >= a[i].first ){
-	int dif = value - a[i].first;
-	value=0;
-	ret.push_back(make_pair(pos[dif],a[i].second));
-	break;
-	}else {
-	continue;
-	}
-	}
-	if(value > 0){
-	for(int i=0;i<(int)sb.size();i++){
-	ans[i][idx]='x';
-	}
-	}else{
-	for(int i=0;i<(int)ret.size();i++){
-	ans[ret[i].second][idx]=ret[i].first;
-	}
-
-	}
-	}
-	*/
-	int solve1(int idx, int value) {
-		if (idx >= sb.size()) {
-			return value != 0 ? -1e9 : 0;
-		}
-		int  &ret = dp[idx][value];
-		if (ret != -1) {
-			return ret;
-		}
-		for (int i = 0; i<=35; i++) {
-			if (value < sb[idx]+i)break;
-			if (ret < solve1(idx + 1, value - (sb[idx] + i)) + 1){
-				ret = solve1(idx + 1, value - (sb[idx] + i)) + 1;
-              }
-		}
-		if (ret < solve1(idx + 1, value)) {
-			ret = solve1(idx + 1, value);
-		}
-		return ret;
-
-	}
-
-	void Out(int idx, int value) {
-		if (idx >= (int)sb.size()) {
-			return;
-		}
-		int mainch = solve1(idx, value);
-		int ch2 = solve1(idx + 1, value);
-		if (mainch == ch2) {
-			Out(idx + 1, value);
-		}
-		else {
-			for (int i = 0; i<=35; i++) {
-				if (value < sb[idx] + i)break;
-				int x = solve1(idx + 1, value - (sb[idx]+i)) + 1;
-				if (mainch == x) {
-					ans[idx][curcol] = pos[i];
-					Out(idx + 1, value - (sb[idx] + i));
-					break;
-				}
-			}
-		}
-	}
-	void pput(int c,int f ) {
-		for (int j = 0; j<(int)sb.size(); j++) {
-			ans[j][c] = ((f==0)?'-':'x');
-		}
-	}
-	void solve() {
-		int x=0;
-		for (int i = 0; i<n; i++) {
-			curcol = i;
-			if (bad[i]) {
-				pput(i, 0);
-				x = -5;
-			}else if (col[i] < 0) {
-				pput(i,1);
-				x = -5;
-			}else { 
-				x = solve1(0, col[i]); 
-			}
-			if (!bad[i]&&x<0) {
-				pput(i,1);
-			}else if(x>0&&!bad[i]){
-				Out(0, col[i]);
-			}
-			memset(dp, -1, sizeof(dp));
-		}
-
-	}
-	vector <string> transformTab(vector <string> tab, vector <int> stringsA, vector <int>stringsB, int d) {
-		sa = stringsA;
-		sb = stringsB;
-		n = (int)tab[0].size();
-		pos = "0123456789";
-		memset(bad, 1, sizeof(bad));
-		memset(col, 0, sizeof(col));
-		ans.clear();
+	vector <string> transformTab(vector <string> tab, vector <int> sa, vector <int>sb, int d) {
+		string pos = "0123456789";
+		memset(notes, 0, sizeof(notes));
+		int n = sb.size();
 		for (char i = 'A'; i <= 'Z'; i++) {
 			pos += i;
 		}
-		for (int i = 0; i<(int)tab.size(); i++) {
-			for (int j = 0; j < (int)tab[i].size(); j++) {
-				if (tab[i][j] != '-'){
-				   col[j] += ((int)pos.find(tab[i][j]) + sa[i]);
-				   bad[j] = 0;
-			     }
-				if (i + 1 == (int)tab.size() && !bad[j]) { col[j] += d;}
+		for (int i = 0; i<(int)tab[0].size(); i++) {
+			for (int j = 0; j<(int)tab.size(); j++) {
+				if (tab[j][i] != '-')notes[i].push_back(sa[j] + (int)pos.find(tab[j][i]) + d);
 			}
+			sort(notes[i].begin(), notes[i].end());
+			reverse(notes[i].begin(), notes[i].end());
 		}
-		
-		for (int i = 0; i<(int)sb.size(); i++) {
-			ans.push_back(tab[0]);
-	//		a.push_back(make_pair(sb[i], i));
-		}
-		//sort(a.begin(), a.end());
-		solve();
-		return ans;
+		vector<string>ans(n);
+		for (int i = 0; i<tab[0].size(); i++) {
+			memset(col, -1, sizeof(col));
+			bool f = 1;
+			for (int j = 0; j<(int)notes[i].size(); j++) {
+				int x = notes[i][j];
+				int tmp = -1;
+				for (int k = 0; k<n; k++) {
+					if (col[k] == -1 && x >= sb[k] && x <= sb[k] + 35) {
+						if (tmp == -1 || sb[k] >= sb[tmp])tmp = k;
+					}
+				}
+				if (tmp == -1) { f = 0; break; }
+				col[tmp] = x - sb[tmp];
+			}
+			if (!f) {
+				for (int k = 0; k<n; k++) {
+					ans[k] += 'x';
+				}
+			}
+			else {
+				for (int k = 0; k<n; k++) {
+					if (col[k] == -1)ans[k] += '-';
+					else ans[k] += pos[col[k]];
+				}
+			}
 
+		}
+
+		return ans;
 	}
 };
 
