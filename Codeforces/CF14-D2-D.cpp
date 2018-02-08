@@ -37,6 +37,7 @@ int solve(int u){
         return mxdp;
 }
 int main(){
+  
        int n;
        scanf("%d",&n);
        for(int i=0,a,b;i<n-1;i++){
@@ -52,4 +53,5 @@ int main(){
            ans=max(ans,dep1*dep2);
        }
        printf("%d",ans);
-}
+       
+ }   

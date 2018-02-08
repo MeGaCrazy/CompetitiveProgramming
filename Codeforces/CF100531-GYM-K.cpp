@@ -13,8 +13,8 @@ const int N=1005,MOD=(int)1e9+7;
 int dp[2][351][251];
 int q[N],x[N];
 int main(){
-   freopen("kebab.in","r",stdin);
-   freopen("kebab.out","w",stdout);
+  // freopen("kebab.in","r",stdin);
+  // freopen("kebab.out","w",stdout);
    int n,t;
    scanf("%d %d",&n,&t);
    for(int i=0;i<n;i++){
