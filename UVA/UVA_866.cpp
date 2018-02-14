@@ -79,16 +79,14 @@ bool Edit(point &a,point &b){
    return 1;
 }
 void getInter(point &a,point &b,point &c,point &d){
-  point v=b-a;
-  point u=d-c;
+  point u=b-a;
+  point v=d-c;
   point w=a-c;
 
   if(cross(u,v)==0)return;
-  double t=fabs(cross(u,w)/cross(u,v));
-  point ret=v*t+a;
-//  cerr<<ret.x<<" "<<ret.y<<endl;
+  double t=cross(v,w)/cross(u,v);
+  point ret=u*t+a;
   point f[2];
-
   f[0]=a;
   f[1]=ret;
   sort(f,f+2);
