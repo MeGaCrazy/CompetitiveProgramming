@@ -4,8 +4,10 @@
 *   @Idea :    Sort all according their height then calculate the current height if > next one then go further 
 *              if not stop
 *     
-*
-*
+*   Problem ask : " If I give you buildings with different height in region and the volumn of raining water
+*                    .. notes** the region is like downhill and when the raining beging the water down from highest building
+*                    to the lowest" "And Land won't Observe the water" : now told me water level("height") and percentge of
+*                    of flooded building
 *
 *  Happy Solving :)
 **/
