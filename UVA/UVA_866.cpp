@@ -51,7 +51,6 @@ int ccw(point &a,point &b,point &c){
     if(norm(v1) < norm(v2) -EPS)return 1;
     return 0;
 }
-set<pair<pair<int,int> ,pair<int,int> > >s;
 bool Inter(point &a,point &b,point &c,point &d){
     bool f1=(b==a),f2=(c==d);
     if(f1) return ccw(c,d,a)==0;
