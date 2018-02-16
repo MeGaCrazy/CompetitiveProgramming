@@ -1,8 +1,8 @@
 /**
 *   @Author : MeGaCrazy
 *   @InitTime : Fri Feb 16 15:04:00 2018
-*   @Idea :
-*
+*   @Idea :   Just make bfs to check connect nodes ... the valid state for overlap ones is distance between then < radius1+radius2
+*             + u must check that the circle not in another one..     
 *
 *
 *
@@ -37,14 +37,16 @@ int solve (int st){
          for(int i=0;i<n;i++){
             if(visit[i])continue;
             double dist=dis(arr[u].x,arr[u].y,arr[i].x,arr[i].y);
+
+            if(dcmp(dist,arr[u].r+arr[i].r)!=-1)continue;
             double rmin=arr[u].r;
             double rmax=arr[u].r;
             if(dcmp(arr[u].r,arr[i].r)==1){
                rmin=arr[i].r;
-            }else{
+            }else{	
               rmax=arr[i].r;
             }
-//            if(dcmp(dist+rmin,rmax)==1)continue;
+            if(dcmp(dist+rmin,rmax)!=1)continue;
             visit[i]=1;
             ret++;
             q.push(i);
@@ -62,12 +64,15 @@ int main(){
         for(int i=0;i<n;i++){
            scanf("%lf %lf %lf",&arr[i].x,&arr[i].y,&arr[i].r);
         }
-        int ans=1; 
+        int ans=min(1,n); 
         memset(visit,0,sizeof(visit));
         for(int i=0;i<n;i++){
            if(!visit[i])ans=max(ans,solve(i));
         }
-        printf("%d\n",ans);
+        printf("The largest component contains %d ring",ans);
+        if(ans==1){
+          printf(".\n");
+        }else printf("s.\n");
      
      }
 
