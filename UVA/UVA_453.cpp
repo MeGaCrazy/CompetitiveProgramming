@@ -53,22 +53,7 @@ double length(point v){
    return sqrt((v.x*v.x)+(v.y*v.y));
 }
 vector<point>circleInter(point &c1,double r1,point &c2,double r2){
-   // if(c1==c2&&dcmp(r1,r2)==0&&r1>EPS)return vector<point>();
-   if (c1==c2 && dcmp(r1, r2) == 0 && dcmp(r1, 0) > 0)
-    return vector<point>();    // infinity 2 same circles (not points)
-    else if (c1==c2 && dcmp(r1,r2)==0 && dcmp(r1,0)==0) { //2 are the same points
-        return vector<point> (1,c1);
-    }else if(dcmp(r1,0)==0){ //c1 is a point
-        if( dcmp(length(c2-c1),r2)==0)
-            return vector<point>(1,c1);
-        return vector<point>(3,point());
-    }else if(dcmp(r2,0)==0){ //c2 is a point
-        if( dcmp(length(c2-c1),r1)==0)
-            return vector<point>(1,c2);
-        return vector<point>(3,point());
-    }
-
-
+  if(c1==c2&&dcmp(r1,r2)==0&&r1>EPS)return vector<point>();
 
     double ang1=Angle(c2-c1),ang2=get_angle(r2,length(c2-c1),r1);
     if(isnan(ang2))ang2=0;
