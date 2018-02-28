@@ -1,7 +1,7 @@
 /**
 *   @Author : MeGaCrazy
-*   @InitTime : Mon Feb 05 07:29:51 2018
-*   @Idea :
+*   @InitTime : Wed Feb 28 14:51:22 2018
+*   @Idea :     Get the Shortest Distance between point x in polgoyn 1 and Segments in polygon 2 and Make Floyd 
 *
 *
 *
@@ -11,128 +11,105 @@
 **/
 #include <bits/stdc++.h>
 using namespace std;
+const double EPS=1e-5;
 struct point{
   double x,y;
-  point():x(0),y(0){}
-  point(double X,double Y):x(X),y(Y){}
-  point operator -(point &other){
-    return point(x-other.x,y-other.y);
+  point(double x=0,double y=0):x(x),y(y){}
+  point operator -(point other){
+      return point(x-other.x,y-other.y);
   }
-    point operator +(point &other){
+  point operator +(point other){
     return point(x+other.x,y+other.y);
   }
-
-  inline bool operator ==(point &other){
-     return x==other.x&&y==other.y;
+  point operator *(double f){
+    return point(x*f,y*f);
   }
 };
-const int N=105;
-const double EPS=1e-9;
-point arr[N][2];
-point iso[12][25];
-double cost[25][25];
-int sz[12];
-struct seg{
-  point a,b;
-  seg(point &A,point &B):a(A),b(B){}
-  seg() :a(point(0, 0)), b(point(0, 0)) {}
-};
-seg ft[25];
-seg se[25];
-double dis(double x,double y,double xx,double yy){
- return sqrt((x-xx)*(x-xx)+(y-yy)*(y-yy));
+const int N=25;	
+vector<point>arr[N];
+double cost[N][N];
+double length(point v){
+  return sqrt((v.x*v.x)+(v.y*v.y));
 }
-double dot(point v1,point v2){
-    return v1.x*v2.x + v1.y*v2.y;
+double dot(point &v1,point &v2){
+    return v1.x*v2.x+v1.y*v2.y;
 }
-double cross(point v1,point v2){
-    return v1.x*v2.y - v1.y*v2.x;
+double getDis(point &a,point &b,point &c){
+  double d1,d2;
+  point v1=b-a;
+  point v2=c-a;
+  if((d1=dot(v1,v2))<=0)return length(c-a);
+  if((d2=dot(v1,v1))<=d1)return length(c-b);
+  double t=d1/d2;
+  point ff=(v1*t)+a;
+  return length(c-ff);
 }
-double disToLine(point &f,seg &s){
-      if(s.a==s.b)return dis(f.x,f.y,s.a.x,s.a.y);
-      return abs(cross(f-s.a,s.b-s.a))/dis(s.a.x,s.a.y,s.b.x,s.b.y);
-} 
-double disToSeg(point &f,seg &s){
-     if( dot(f-s.a,s.b-s.a)<=0)return dis(f.x,f.y,s.a.x,s.a.y);
-     if( dot(f-s.b,s.b-s.a) >=0)return dis(f.x,f.y,s.b.x,s.b.y);
-     return disToLine(f,s);
-}
-double disIsland(int idx1,int idx2){
-      double ret=1e9;
-      int len1=0,len2=0;
-      for(int i=0;i<sz[idx1];i++){
-         ft[i]=seg(iso[idx1][i],iso[idx1][(i+1)%sz[idx1]]); 
-         len1++;
-      }	
-      for(int i=0;i<sz[idx2];i++){
-         se[i]=seg(iso[idx2][i],iso[idx2][(i+1)%sz[idx2]]);
-         len2++;
-      }
-      
-      // vertex idx1 to seg idx2
-      for(int i=0;i<sz[idx1];i++){
-         for(int j=0;j<len2;j++){
-             double tmp=disToSeg(iso[idx1][i],se[j]);
-//             cerr<<tmp<<" "<<idx1<<" "<<idx2<<endl;
-             if( tmp < ret+EPS){
-                ret=tmp;
+double disToSeg(int idx1,int idx2){
+    double ret=1e18;
+    for(int i=0;i<(int)arr[idx1].size();i++){
+        for(int j=0;j<(int)arr[idx2].size();j++){
+          if(!(idx1<2&&i+1==arr[idx1].size())){
+             double tt= getDis(arr[idx1][i],arr[idx1][(i+1)%(int)arr[idx1].size()],arr[idx2][j]);
+             if( tt < ret -EPS){
+               ret=tt;
              }
-         }
-      }
-      
-     
-    // vertex idx2 to seg idx1
-    for(int i=0;i<sz[idx2];i++){
-        for(int j=0;j<len1;j++){
-          double tmp=disToSeg(iso[idx2][i],ft[j]);
-          if( tmp < ret+EPS){
-                ret=tmp;
-           }
-        } 
+          }
+          if(!(idx2<2&&j+1==arr[idx2].size())){
+             double tt= getDis(arr[idx2][j],arr[idx2][(j+1)%(int)arr[idx2].size()],arr[idx1][i]);
+             if( tt < ret -EPS){
+               ret=tt;
+             }
+          }
+        }
     }
-    
-   return ret;
+    return ret;
 }
 int main(){
-#ifndef	ONLINE_JUDGE
+#ifndef ONLINE_JUDGE
    freopen("in","r",stdin);
-  // freopen("out","w",stdout);
+   //freopen("out","w",stdout);
 #endif
      int t;
      scanf("%d",&t);
      while(t--){
-        int r1,r2,n;
-        scanf("%d %d %d",&sz[0],&sz[1],&n);
-        for(int i=0;i<sz[0];i++){
-           scanf("%lf %lf",&iso[0][i].x,&iso[0][i].y);
+        int n,r1,r2;
+        double x,y;   
+        memset(arr,0,sizeof(arr));
+        scanf("%d %d %d",&r1,&r2,&n);
+        for(int i=0;i<r1;i++){
+            scanf("%lf %lf",&x,&y);
+            arr[0].push_back(point(x,y));
         }
-        for(int i=0;i<sz[1];i++){
-           scanf("%lf %lf",&iso[1][i].x,&iso[1][i].y);
+        for(int i=0;i<r2;i++){
+           scanf("%lf %lf",&x,&y);
+           arr[1].push_back(point(x,y));
         }
         n+=2;
         for(int i=2;i<n;i++){
-             scanf("%d",&sz[i]);
-             for(int j=0;j<sz[i];j++){
-                scanf("%lf %lf",&iso[i][j].x,&iso[i][j].y);
-             }
-        }
-        for(int i=0;i<n;i++){
-           for(int j=0;j<n;j++){
-                if(i==j)cost[i][j]=0;
-		else cost[i][j]=disIsland(i,j);
+           int sz;
+           scanf("%d",&sz);
+           for(int j=0;j<sz;j++){
+               scanf("%lf %lf",&x,&y);
+               arr[i].push_back(point(x,y));
            }
         }
-        // End input
-         for(int k=0;k<n;k++){          // floyd for islands
-            for(int i=0;i<n;i++){
-               for(int j=0;j<n;j++){
-                  if(cost[i][k]+ cost[k][j] < cost[i][j] +EPS){
-			cost[i][j]= cost[i][k]+ cost[k][j];
-                  }
-               }
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                cost[i][j]=cost[j][i]=disToSeg(i,j);
+               if(i==j)cost[i][j]=0;
+               cost[i][j]=disToSeg(i,j);
             }
-         }
-         printf("%.3f\n",cost[0][1]);
+        }
+        for(int k=0;k<n;k++){
+           for(int i=0;i<n;i++){
+              for(int j=0;j<n;j++){
+                 if(i==j)continue;
+                 if(cost[i][k]+cost[k][j] < cost[i][j]-EPS){
+                    cost[i][j]=cost[i][k]+cost[k][j];
+                 }
+              }
+           }
+        }
+        printf("%.3f\n",cost[0][1]);
      }
-
 }
