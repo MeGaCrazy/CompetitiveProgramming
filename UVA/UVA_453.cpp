@@ -1,7 +1,7 @@
 /**
 *   @Author : MeGaCrazy
 *   @InitTime : Fri Feb 23 11:10:25 2018
-*   @Idea :
+*   @Idea :    Using Usual Circle Intersection but the Only matter in this problem is add 1e-4 to points in print
 *
 *
 *
@@ -25,7 +25,7 @@ struct point{
      return fabs(x-other.x) <EPS&&fabs(y-other.y) <EPS;
    }
    bool operator <(point other){
-     return  (x  < other.x +EPS || (fabs(x-other.x) <EPS && y <other.y +EPS));
+     return  (x  < other.x -EPS || (fabs(x-other.x) <EPS && y <other.y -EPS));
    }
 
 };
@@ -54,7 +54,6 @@ double length(point v){
 }
 vector<point>circleInter(point &c1,double r1,point &c2,double r2){
   if(c1==c2&&dcmp(r1,r2)==0&&r1>EPS)return vector<point>();
-
     double ang1=Angle(c2-c1),ang2=get_angle(r2,length(c2-c1),r1);
     if(isnan(ang2))ang2=0;
     point v=point(r1*cos(ang1+ang2),r1*sin(ang1+ang2));
