@@ -102,12 +102,12 @@ vector<point> modify(vector<point>&v){
      sort(v.begin(),v.end());
      int sz=0,st=0;
      for(int i=0;i<(int)v.size();i++){
-         while(sz-st >=2 &&(cross(ret[sz-1]-ret[sz-2],v[i]-ret[sz-2])<=0))sz--;
+         if(sz-st >=2 &&(cross(ret[sz-1]-ret[sz-2],v[i]-ret[sz-2])<=0))sz--;
          ret[sz++]=v[i];
      }
      st=--sz;
      for(int i=v.size()-1;i>=0;i--){
-         while(sz-st >=2 && (cross(ret[sz-1]-ret[sz-2],v[i]-ret[sz-2])<=0))sz--;
+         if(sz-st >=2 && (cross(ret[sz-1]-ret[sz-2],v[i]-ret[sz-2])<=0))sz--;
          ret[sz++]=v[i];
      }
      vector<point>r;
