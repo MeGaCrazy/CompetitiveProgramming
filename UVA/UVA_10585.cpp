@@ -1,9 +1,9 @@
 /**
 *   @Author : MeGaCrazy
 *   @InitTime : Thu Mar 29 17:36:16 2018
-*   @Idea :
-*
-*
+*   @Idea :     Just Sort Points it's obvious that First and Last One That the point that may make line cross by Center of Symmetry
+*               and also The Second ,and the one before the last ... and so one Just get the Center and Check if Other Their Center
+*               is Same ... :)
 *
 *
 *
