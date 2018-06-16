@@ -1,17 +1,20 @@
 /**
 *   @Author : MeGaCrazy
 *   @InitTime : Sat Jun 16 04:02:19 2018
-*   @Idea :
-*
-*
-*
-*
+*   @Idea :   First instead of finding the new area directly we will get the area of removed parts and  
+*             substract it from the whole area ..
+*             How to get the Removed area..For each edge we can calculate the new area of new edge corresbonding to this edge
+*             Just we caculate the removed distance from the orginial part and culculate the area like in this figure :
+*             link : shorturl.at/imuJ1  
+*             so we caculate the angle using dot product and then get the removed part then calcuate the rectangle area for each edge
+*             and then substract from the original area that's it 
 *
 *  Happy Solving :)
 **/
 #include <bits/stdc++.h>
 using namespace std;
-    int d,n;
+double d;
+int n;
 
 struct point{
   double x,y;
@@ -29,9 +32,13 @@ struct point{
   point operator *(double other){
   	return point(x*other,y*other);
   }
+  point operator -(double other){
+  	return point(x-other,y-other);
+  }
+
 
 };
-const int N=10005;
+const int N=100005;
 point arr[N];
 double cross(point &v1,point &v2){
 	return v1.x*v2.y-v1.y*v2.x;
@@ -39,25 +46,34 @@ double cross(point &v1,point &v2){
 double dot(point &v1,point &v2){
 	return v1.x*v2.x+v1.y*v2.y;
 }
-void normalize(point &v){
-	double length=sqrt(dot(v,v));
-      v=v/length;
+double norm(point v){
+	return sqrt(dot(v,v));
 }
-vector<point>new_poly(){
-	vector<point>ret;
+double Angle(point &v1,point &v2){     																				
+      return acos(dot(v1,v2)/sqrt(dot(v1,v1)*dot(v2,v2)));
+}
+const double EPS=1e-9,PI=acos(-1);
+double cut(){
+	double ret=0;
+	vector<double>x(n+1,0);
        for(int i=0;i<n;i++){
-         point a=arr[i];
-         point b=arr[(i+1)%n];
-         point c=arr[(i-1+n)%n];
-         point v1=b-a;
-         point v2=c-a;
-         point v=(v1+v2)/2.0;
-         normalize(v);
-         double dd=sqrt(2)*1.0*d;
-         point end=(v*dd)+a;
-         ret.push_back(end);
+           point a=arr[i];
+           point b=arr[(i+1)%n];
+           point c=arr[(i-1+n)%n];
+           point v1=b-a;
+           point v2=c-a;
+           double angle=Angle(v1,v2);
+           if(fabs(angle-PI) <EPS){
+           		continue;
+           }
+//           cout<<angle<<endl;
+           x[i]=d/tan(angle/2.0);         // get removed part
        }
-       return ret;
+       x[n]=x[0];
+       for(int i=0;i<n;i++){
+          ret+=norm(arr[i+1]-arr[i])-x[i];             // get the length of after remove the ignored part
+       }
+       return ret*d;             // get the rectangles' area         
 	
 }
 int main(){
@@ -65,17 +81,16 @@ int main(){
    freopen("in","r",stdin);
    //freopen("out","w",stdout);
 #endif
-    while(scanf("%d %d",&d,&n),(d+n)){
+    while(scanf("%lf %d",&d,&n),(n)){
     	  for(int i=0;i<n;i++){
     	  	scanf("%lf %lf",&arr[i].x,&arr[i].y);
     	  }
     	  arr[n]=arr[0];
-    	  vector<point>ret=new_poly();
     	  double ans=0;
-    	  for(int i=0;i<ret.size();i++){
-    	  	ans+=cross(ret[i],ret[(i+1)%n]);
+    	  for(int i=0;i<n;i++){
+    	  	ans+=cross(arr[i],arr[(i+1)%n]);
     	  }
-    	  printf("%lf\n",fabs(ans)/2.0);
+    	  printf("%.3f\n",(abs(ans)/2.0) - cut());
     }
 
 
