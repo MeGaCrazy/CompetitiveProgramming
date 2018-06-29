@@ -43,7 +43,7 @@ int main(){
 #endif
      while(scanf("%d",&n),n){
         for(int i=0;i<n;i++){
-        	scanf("%d %d",&arr[i].x,&arr[i].y);
+        	scanf("%lld %lld",&arr[i].x,&arr[i].y);
         }
         arr[n]=arr[0];
         long long area=0;
